@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTrungTamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="CertificateID" />
+          </Key>
+          <Property Name="CertificateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CouresID" Type="int" />
+          <Property Name="ReleaseDate" Type="date" />
+          <Property Name="ExpirationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="TeacherID" Type="int" />
+          <Property Name="Tuition" Type="float" />
+          <Property Name="SessionNum" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="ClassroomID" />
+          </Key>
+          <Property Name="ClassroomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassroomName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Size" Type="nchar" MaxLength="10" />
+          <Property Name="CSVC" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Coures">
+          <Key>
+            <PropertyRef Name="CouresID" />
+          </Key>
+          <Property Name="CouresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CouresName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Conditions" Type="nvarchar" MaxLength="50" />
+          <Property Name="Object" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="50" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeesID" />
+          </Key>
+          <Property Name="EmployeesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeesName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="IdentityCard" Type="int" />
+          <Property Name="Phone" Type="char" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTrungTam.dbo.List_student_class' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="List_student_class">
+          <Property Name="ClassID" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="ClassroomID" Type="int" />
+          <Property Name="Shifts" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTrungTam.dbo.Scores' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Scores">
+          <Property Name="ClassID" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="Scores" Type="float" />
+        </EntityType>-->
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="IdentityCard" Type="int" />
+          <Property Name="Phone" Type="char" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdentityCard" Type="int" />
+          <Property Name="Phone" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Tuition">
+          <Key>
+            <PropertyRef Name="TuitionID" />
+          </Key>
+          <Property Name="TuitionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="ObjectsReduced" Type="nchar" MaxLength="10" />
+          <Property Name="Money" Type="float" />
+          <Property Name="Payments" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="16" />
+          <Property Name="Password" Type="char" MaxLength="32" />
+          <Property Name="AccountType" Type="char" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Certificate_Coures">
+          <End Role="Coures" Type="Self.Coures" Multiplicity="0..1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coures">
+              <PropertyRef Name="CouresID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="CouresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Coures">
+          <End Role="Coures" Type="Self.Coures" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coures">
+              <PropertyRef Name="CouresID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOCVIEN_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'QLTrungTam.dbo.List_student_class' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_List_student_class_Class" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'QLTrungTam.dbo.List_student_class' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_List_student_class_Student" />-->
+        <Association Name="FK_Schedule_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Classroom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="ClassroomID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ClassroomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'QLTrungTam.dbo.Scores' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Scores_Class" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'QLTrungTam.dbo.Scores' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Scores_Student" />-->
+        <Association Name="FK_Teacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTrungTamModelStoreContainer">
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classroom" EntityType="Self.Classroom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coures" EntityType="Self.Coures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuition" EntityType="Self.Tuition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Certificate_Coures" Association="Self.FK_Certificate_Coures">
+            <End Role="Coures" EntitySet="Coures" />
+            <End Role="Certificate" EntitySet="Certificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Coures" Association="Self.FK_Class_Coures">
+            <End Role="Coures" EntitySet="Coures" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Teacher" Association="Self.FK_Class_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_User" Association="Self.FK_Employees_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOCVIEN_User" Association="Self.FK_HOCVIEN_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Class" Association="Self.FK_Schedule_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Classroom" Association="Self.FK_Schedule_Classroom">
+            <End Role="Classroom" EntitySet="Classroom" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_Class" Association="Self.FK_Tuition_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Tuition" EntitySet="Tuition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_Student" Association="Self.FK_Tuition_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Tuition" EntitySet="Tuition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTrungTamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="CertificateID" />
+          </Key>
+          <Property Name="CertificateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CouresID" Type="Int32" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Coure" Relationship="Self.FK_Certificate_Coures" FromRole="Certificate" ToRole="Coures" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="TeacherID" Type="Int32" />
+          <Property Name="Tuition" Type="Double" />
+          <Property Name="SessionNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Coure" Relationship="Self.FK_Class_Coures" FromRole="Class" ToRole="Coures" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Class_Teacher" FromRole="Class" ToRole="Teacher" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Class" FromRole="Class" ToRole="Schedule" />
+          <NavigationProperty Name="Tuitions" Relationship="Self.FK_Tuition_Class" FromRole="Class" ToRole="Tuition" />
+        </EntityType>
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="ClassroomID" />
+          </Key>
+          <Property Name="ClassroomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassroomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CSVC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Classroom" FromRole="Classroom" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Coure">
+          <Key>
+            <PropertyRef Name="CouresID" />
+          </Key>
+          <Property Name="CouresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CouresName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Conditions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Object" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificate_Coures" FromRole="Coures" ToRole="Certificate" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Coures" FromRole="Coures" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeesID" />
+          </Key>
+          <Property Name="EmployeesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="IdentityCard" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employees_User" FromRole="Employees" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="ClassroomID" Type="Int32" />
+          <Property Name="Shifts" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Schedule_Class" FromRole="Schedule" ToRole="Class" />
+          <NavigationProperty Name="Classroom" Relationship="Self.FK_Schedule_Classroom" FromRole="Schedule" ToRole="Classroom" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="IdentityCard" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_HOCVIEN_User" FromRole="Student" ToRole="User" />
+          <NavigationProperty Name="Tuitions" Relationship="Self.FK_Tuition_Student" FromRole="Student" ToRole="Tuition" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityCard" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Teacher" FromRole="Teacher" ToRole="Class" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Tuition">
+          <Key>
+            <PropertyRef Name="TuitionID" />
+          </Key>
+          <Property Name="TuitionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="ObjectsReduced" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Money" Type="Double" />
+          <Property Name="Payments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Tuition_Class" FromRole="Tuition" ToRole="Class" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Tuition_Student" FromRole="Tuition" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="AccountType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_User" FromRole="User" ToRole="Employees" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_HOCVIEN_User" FromRole="User" ToRole="Student" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Certificate_Coures">
+          <End Role="Coures" Type="Self.Coure" Multiplicity="0..1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coures">
+              <PropertyRef Name="CouresID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="CouresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Coures">
+          <End Role="Coures" Type="Self.Coure" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coures">
+              <PropertyRef Name="CouresID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Classroom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="ClassroomID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ClassroomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOCVIEN_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTrungTamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Classrooms" EntityType="Self.Classroom" />
+          <EntitySet Name="Coures" EntityType="Self.Coure" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Tuitions" EntityType="Self.Tuition" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Certificate_Coures" Association="Self.FK_Certificate_Coures">
+            <End Role="Coures" EntitySet="Coures" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Coures" Association="Self.FK_Class_Coures">
+            <End Role="Coures" EntitySet="Coures" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Teacher" Association="Self.FK_Class_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Class" Association="Self.FK_Schedule_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_Class" Association="Self.FK_Tuition_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Tuition" EntitySet="Tuitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Classroom" Association="Self.FK_Schedule_Classroom">
+            <End Role="Classroom" EntitySet="Classrooms" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_User" Association="Self.FK_Employees_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOCVIEN_User" Association="Self.FK_HOCVIEN_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_Student" Association="Self.FK_Tuition_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Tuition" EntitySet="Tuitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTrungTamModelStoreContainer" CdmEntityContainer="QLTrungTamEntities">
+          <EntitySetMapping Name="Certificates">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="CertificateName" ColumnName="CertificateName" />
+                <ScalarProperty Name="CouresID" ColumnName="CouresID" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="Tuition" ColumnName="Tuition" />
+                <ScalarProperty Name="SessionNum" ColumnName="SessionNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classrooms">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Classroom">
+              <MappingFragment StoreEntitySet="Classroom">
+                <ScalarProperty Name="ClassroomID" ColumnName="ClassroomID" />
+                <ScalarProperty Name="ClassroomName" ColumnName="ClassroomName" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CSVC" ColumnName="CSVC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coures">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Coure">
+              <MappingFragment StoreEntitySet="Coures">
+                <ScalarProperty Name="CouresID" ColumnName="CouresID" />
+                <ScalarProperty Name="CouresName" ColumnName="CouresName" />
+                <ScalarProperty Name="Conditions" ColumnName="Conditions" />
+                <ScalarProperty Name="Object" ColumnName="Object" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeesID" ColumnName="EmployeesID" />
+                <ScalarProperty Name="EmployeesName" ColumnName="EmployeesName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IdentityCard" ColumnName="IdentityCard" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassroomID" ColumnName="ClassroomID" />
+                <ScalarProperty Name="Shifts" ColumnName="Shifts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IdentityCard" ColumnName="IdentityCard" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IdentityCard" ColumnName="IdentityCard" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuitions">
+            <EntityTypeMapping TypeName="QLTrungTamModel.Tuition">
+              <MappingFragment StoreEntitySet="Tuition">
+                <ScalarProperty Name="TuitionID" ColumnName="TuitionID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ObjectsReduced" ColumnName="ObjectsReduced" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QLTrungTamModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

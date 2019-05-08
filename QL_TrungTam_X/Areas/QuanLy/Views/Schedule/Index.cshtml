@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QL_TrungTam_X.Areas.QuanLy.Models.Schedule>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Shifts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classroom.ClassroomName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shifts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classroom.ClassroomName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScheduleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduleID })
+        </td>
+    </tr>
+}
+
+</table>

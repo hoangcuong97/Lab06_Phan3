@@ -1,0 +1,49 @@
+﻿@model QL_TrungTam_X.Areas.QuanLy.Models.Schedule
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Shifts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shifts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classroom.ClassroomName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classroom.ClassroomName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

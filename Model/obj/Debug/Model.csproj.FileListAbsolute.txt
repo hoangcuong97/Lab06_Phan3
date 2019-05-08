@@ -1,0 +1,10 @@
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\Model.dll.config
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\Model.dll
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\Model.pdb
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\EntityFramework.dll
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\EntityFramework.xml
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\obj\Debug\Model.dll
+D:\Lập Trình Wed Nâng Cao\C#\QL_TrungTam_X\Model\obj\Debug\Model.pdb

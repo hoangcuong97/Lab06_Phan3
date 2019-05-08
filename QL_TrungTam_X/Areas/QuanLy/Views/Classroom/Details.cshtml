@@ -1,0 +1,43 @@
+﻿@model QL_TrungTam_X.Areas.QuanLy.Models.Classroom
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Classroom</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassroomName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassroomName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSVC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSVC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassroomID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

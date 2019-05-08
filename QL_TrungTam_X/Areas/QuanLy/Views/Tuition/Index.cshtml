@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QL_TrungTam_X.Areas.QuanLy.Models.Tuition>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ObjectsReduced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.StudentName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ObjectsReduced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Money)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.StudentName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TuitionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TuitionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TuitionID })
+        </td>
+    </tr>
+}
+
+</table>

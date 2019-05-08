@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QL_TrungTam_X.Areas.QuanLy.Models.Coure>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CouresName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conditions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Object)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contents)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Target)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CouresName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conditions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Object)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contents)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Target)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CouresID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CouresID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CouresID })
+        </td>
+    </tr>
+}
+
+</table>
